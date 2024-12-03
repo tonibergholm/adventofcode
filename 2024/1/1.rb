@@ -18,9 +18,13 @@ file_contents = File.read(file_path)
   array2.sort!
 
   total_distance = 0
+  total_sum = 0
 
   array1.each_with_index do |value, index|
     total_distance += (value - array2[index]).abs
+    count = array2.count(value)
+    total_sum += value * count
   end
 
+  puts "Total sum: #{total_sum}"
   puts "Total distance: #{total_distance}"
