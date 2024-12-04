@@ -48,3 +48,19 @@ end
 end
 
 puts "Total 'XMAS' found: #{xmas_count}"
+
+# 3x3 MAS or SAM
+x_count = 0
+
+(0..char_matrix.size - 3).each do |i|
+  (0..char_matrix[0].size - 3).each do |j|
+    window = char_matrix[i, 3].map { |row| row[j, 3] }
+    d1 = (0..2).map { |k| window[k][k] }.join
+    d2 = (0..2).map { |k| window[k][2 - k] }.join
+    if ["SAM", "MAS"].include?(d1) && ["SAM", "MAS"].include?(d2)
+      x_count += 1
+    end
+  end
+end
+
+puts "Total X-MAS found: #{x_count}"
